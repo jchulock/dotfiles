@@ -1,0 +1,133 @@
+# modifiers
+set $alt Mod1
+set $met Mod4
+set $cap Mod3
+floating_modifier $met
+
+# border+font
+#new_window pixel 1
+new_window pixel 2
+font pango:Terminus 16px
+
+# status bar
+bar {
+    status_command i3status
+}
+
+# launch nm on load
+exec --no-startup-id nm-applet
+
+# launch
+bindsym $alt+Return exec --no-startup-id urxvt
+bindsym $alt+o exec --no-startup-id chromium
+bindsym $alt+i exec --no-startup-id firefox
+bindsym $alt+space exec --no-startup-id dmenu_run
+bindsym $met+space exec --no-startup-id i3lock -c 000000 -e #&& systemctl suspend
+
+# pulse audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# power
+bindsym $alt+$met+Escape exec systemctl poweroff
+bindsym $alt+$met+grave exec systemctl reboot
+
+# kill focused window
+bindsym $alt+w kill
+
+# reload config
+bindsym $met+grave reload
+
+# restart i3 inplace
+bindsym $alt+Shift+r restart
+
+# change focus
+bindsym $alt+h focus left
+bindsym $alt+j focus down
+bindsym $alt+k focus up
+bindsym $alt+l focus right
+bindsym $alt+Left focus left
+bindsym $alt+Down focus down
+bindsym $alt+Up focus up
+bindsym $alt+Right focus right
+
+# move focused window
+bindsym $met+h move left
+bindsym $met+j move down
+bindsym $met+k move up
+bindsym $met+l move right
+bindsym $met+Left move left
+bindsym $met+Down move down
+bindsym $met+Up move up
+bindsym $met+Right move right
+
+# split in horizontal orientation
+bindsym $alt+g split h
+
+# split in vertical orientation
+bindsym $alt+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $met+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $alt+d layout toggle split
+bindsym $alt+a layout stacking
+bindsym $alt+s layout tabbed
+
+# toggle tiling / floating
+bindsym $alt+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $alt+y focus mode_toggle
+
+# focus the parent container
+bindsym $alt+r focus parent
+
+# focus the child container
+bindsym $alt+e focus child
+
+# switch to workspace
+bindsym $met+1 workspace 1
+bindsym $met+2 workspace 2
+bindsym $met+3 workspace 3
+bindsym $met+4 workspace 4
+bindsym $met+5 workspace 5
+bindsym $met+6 workspace 6
+bindsym $met+7 workspace 7
+bindsym $met+8 workspace 8
+bindsym $met+9 workspace 9
+bindsym $met+0 workspace 10
+bindsym $cap+1 workspace 11
+bindsym $cap+2 workspace 12
+bindsym $cap+3 workspace 13
+bindsym $cap+4 workspace 14
+bindsym $cap+5 workspace 15
+bindsym $cap+6 workspace 16
+bindsym $cap+7 workspace 17
+bindsym $cap+8 workspace 18
+bindsym $cap+9 workspace 19
+bindsym $cap+0 workspace 20
+
+# move focused container to workspace
+bindsym $met+Shift+1 move container to workspace 1
+bindsym $met+Shift+2 move container to workspace 2
+bindsym $met+Shift+3 move container to workspace 3
+bindsym $met+Shift+4 move container to workspace 4
+bindsym $met+Shift+5 move container to workspace 5
+bindsym $met+Shift+6 move container to workspace 6
+bindsym $met+Shift+7 move container to workspace 7
+bindsym $met+Shift+8 move container to workspace 8
+bindsym $met+Shift+9 move container to workspace 9
+bindsym $met+Shift+0 move container to workspace 10
+bindsym $cap+Shift+1 move container to workspace 11
+bindsym $cap+Shift+2 move container to workspace 12
+bindsym $cap+Shift+3 move container to workspace 13
+bindsym $cap+Shift+4 move container to workspace 14
+bindsym $cap+Shift+5 move container to workspace 15
+bindsym $cap+Shift+6 move container to workspace 16
+bindsym $cap+Shift+7 move container to workspace 17
+bindsym $cap+Shift+8 move container to workspace 18
+bindsym $cap+Shift+9 move container to workspace 19
+bindsym $cap+Shift+0 move container to workspace 20
