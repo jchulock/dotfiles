@@ -12,3 +12,6 @@ alias mbe='xrandr --output VGA-1 --auto --below LVDS-1'
 alias mle='xrandr --output VGA-1 --auto --left-of LVDS-1'
 alias mri='xrandr --output VGA-1 --auto --right-of LVDS-1'
 alias mof='xrandr --output VGA-1 --off'
+
+alias python='python3'
+#alias vim='nvim'

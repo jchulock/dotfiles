@@ -8,8 +8,7 @@ let mapleader = "\<Space>"
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'easymotion/vim-easymotion'
-Plug 'Valloric/YouCompleteMe'
-Plug 'mustache/vim-mustache-handlebars'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim' "configure Ag
 Plug 'scrooloose/nerdtree' "netrw / disable unless asked for (lazy)
@@ -22,10 +21,29 @@ Plug 'othree/yajs.vim' "check alternatives..
 "Plug 'vim-syntastic/syntastic' "slow af lmao
 Plug 'Raimondi/delimitMate'
 Plug 'nathanaelkane/vim-indent-guides' "change default colors
-Plug 'Chun-Yang/vim-action-ag'
+"Plug 'Chun-Yang/vim-action-ag' "why the doesn't this work anymore :(
 Plug 'styled-components/vim-styled-components'
+Plug 'https://github.com/ARM9/arm-syntax-vim'
 "Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"ARM SYNTAX
+au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
+
+"jedi
+set completeopt-=preview
 
 " PLUGIN "
 
@@ -153,4 +171,3 @@ cmap w!! w !sudo /usr/bin/tee > /dev/null %
 "nnoremap <C-K> <C-W>k<C-W><Esc>
 "nnoremap <C-L> <C-W>l<C-W><Esc>
 ""interferes with <C-L>, leader key was some weirdness
-

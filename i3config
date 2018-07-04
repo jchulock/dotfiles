@@ -8,21 +8,57 @@ floating_modifier $met
 #new_window pixel 1
 new_window pixel 2
 font pango:Terminus 16px
+#hide_edge_borders both
+
+# colors
+#                       border  bg      text    ind     child_border
+client.focused          #6a3684 #6a3684 #dddddd #dbc99d #6a3684
+client.focused_inactive #dbc99d #dbc99d #181715 #6a3684 #dbc99d
+
+#TODO
+client.unfocused        #222133 #2b2a42 #AAAAAA #A074C4
+#TODO
+client.urgent           #CE4045 #CE4045 #e7d8b1 #DCCD69
+
+client.placeholder      #000000 #000000 #ffffff #000000   #000000
+client.background       #ffffff
 
 # status bar
 bar {
-    status_command i3status
+  status_command i3status
+  colors {
+    separator           #AAAAAA
+    background          #000000
+    statusline          #FFFFFF
+
+                        #border backg   text
+    focused_workspace   #88aa66 #6a3684 #dddddd 
+    #TODO
+    active_workspace    #DCCD69 #DCCD69 #181715
+    inactive_workspace  #222133 #222133 #AAAAAA
+    #TODO
+    urgent_workspace    #CE4045 #CE4045 #FFFFFF
+  }
 }
 
 # launch nm on load
 exec --no-startup-id nm-applet
+# launch thunar (for volman) on load
+exec --no-startup-id thunar --daemon
 
 # launch
 bindsym $alt+Return exec --no-startup-id urxvt
 bindsym $alt+o exec --no-startup-id chromium
 bindsym $alt+i exec --no-startup-id firefox
-bindsym $alt+space exec --no-startup-id dmenu_run
+
+#TODO dmenu color https://thomashunter.name/i3-configurator/
+bindsym $alt+space exec --no-startup-id "dmenu_run -nf '#000000' -nb '#E9D6FF' -sb '#664477' -sf '#FFFFFF'"
 bindsym $met+space exec --no-startup-id i3lock -c 000000 -e #&& systemctl suspend
+bindsym $alt+minus exec --no-startup-id redshift -O 3000
+bindsym $alt+plus exec --no-startup-id redshift -x
+#TODO fix shutter on no scrot
+bindsym $met+shift+s exec --no-startup-id "pkill shutter; shutter -s -e -n"
+bindsym $alt+p exec --no-startup-id "pkill shutter; shutter -w -e -n"
 
 # pulse audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
